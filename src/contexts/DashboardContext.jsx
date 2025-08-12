@@ -29,7 +29,9 @@ export const DashboardProvider = ({ children }) => {
         const parsed = JSON.parse(savedState);
         setWidgets(parsed.widgets || defaultWidgets);
       } catch (error) {
-        console.error('Error parsing dashboard state:', error);
+        if (process.env.NODE_ENV === 'development') {
+          console.error('Error parsing dashboard state:', error);
+        }
       }
     }
   }, []);

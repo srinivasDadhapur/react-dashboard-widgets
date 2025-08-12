@@ -16,7 +16,9 @@ export const LoginForm = () => {
     try {
       await login(credentials);
     } catch (error) {
-      console.error('Login failed:', error);
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Login failed:', error);
+      }
     } finally {
       setLoading(false);
     }

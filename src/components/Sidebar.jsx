@@ -1,7 +1,8 @@
+import { memo } from 'react';
 import { BarChart3, Grid3X3, Settings, Home, TrendingUp, Users } from 'lucide-react';
 import { useDashboard } from '../contexts/DashboardContext';
 
-export const Sidebar = ({ isOpen }) => {
+export const Sidebar = memo(({ isOpen }) => {
   const { addWidget } = useDashboard();
 
   const menuItems = [
@@ -60,4 +61,6 @@ export const Sidebar = ({ isOpen }) => {
       )}
     </aside>
   );
-};
+});
+
+Sidebar.displayName = 'Sidebar';

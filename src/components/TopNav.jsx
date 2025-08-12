@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import { Menu, Search, Bell, User, LogOut, Moon, Sun } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { useTheme } from '../contexts/ThemeContext';
 import { useDashboard } from '../contexts/DashboardContext';
 
-export const TopNav = ({ onSidebarToggle }) => {
+export const TopNav = memo(({ onSidebarToggle }) => {
   const [showUserMenu, setShowUserMenu] = useState(false);
   const { user, logout } = useAuth();
   const { theme, toggleTheme } = useTheme();
@@ -84,4 +84,6 @@ export const TopNav = ({ onSidebarToggle }) => {
       </div>
     </header>
   );
-};
+});
+
+TopNav.displayName = 'TopNav';
